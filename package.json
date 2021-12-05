@@ -8,7 +8,8 @@
   "private": true,
   "scripts": {
     "add-component": "node ./scripts/add-component.js",
-    "publish-components": "lerna version major && lerna publish from-package"
+    "publish-components": "lerna version major && lerna publish from-package",
+    "story": "yarn --cwd ./packages story"
   },
   "workspaces": [
     "packages/*"
