@@ -2,6 +2,6 @@
 
 const test = require('..');
 
-describe('@reachout/test', () => {
+describe('test', () => {
     it('needs tests');
 });

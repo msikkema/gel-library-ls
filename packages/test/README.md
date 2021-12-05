@@ -1,11 +1,11 @@
-# `@reachout/test`
+# `test`
 
 > TODO: description
 
 ## Usage
 
 ```
-const test = require('@reachout/test');
+const test = require('test');
 
 // TODO: DEMONSTRATE API
 ```
