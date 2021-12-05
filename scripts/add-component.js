@@ -5,12 +5,19 @@ const { execSync } = require("child_process");
 const { pascalCase, sentenceCase, paramCase } = require("change-case");
 
 inquirer
-  .prompt([{
-    type: "input",
-    name: "camelCase",
-    message: "Please enter the name for the new component (wihout @reachout), inCamelCasePlease"
-  }])
-  .then(({ camelCase }) => {
+  .prompt([
+    {
+      type: "input",
+      name: "camelCase",
+      message: "Please enter the name for the new component (wihout @reachout), inCamelCasePlease and press ENTER"
+    },
+    {
+      type: "input",
+      name: "description",
+      message: "Please enter a one line description for this component and press ENTER"
+    }
+  ])
+  .then(({ camelCase, description }) => {
 
     const asParamCase = paramCase(camelCase);
 
@@ -32,12 +39,12 @@ inquirer
           console.log({ camelCase, asPascalCase, asSentenceCase });
 
           // Use Lerna to add the new sub package
-          execSync(`yarn lerna create @reachout/${asParamCase} --access "restricted" --yes`, {stdio: 'inherit'});
+          execSync(`yarn lerna create @reachout/${asParamCase} --access "restricted" --description "${description}" --yes`, { stdio: 'inherit' });
 
           // Use Hygen to fill in the component scaffolding
           execSync(
             `yarn hygen scaffoldComponent new --camelCase ${camelCase} --pascalCase ${asPascalCase} --sentenceCase ${asSentenceCase} --paramCase ${asParamCase}`,
-            {stdio: 'inherit'}
+            { stdio: 'inherit' }
           );
         } else {
           console.log("Aborting...");
