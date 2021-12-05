@@ -6,10 +6,18 @@
   "author": "msikkema",
   "license": "MIT",
   "private": true,
+  "scripts": {
+    "add-component": "node ./scripts/add-component.js"
+  },
   "workspaces": [
     "packages/*"
   ],
   "devDependencies": {
+    "change-case": "^4.1.2",
+    "inquirer": "^8.2.0",
     "lerna": "^4.0.0"
+  },
+  "dependencies": {
+    "hygen": "^6.1.0"
   }
 }
