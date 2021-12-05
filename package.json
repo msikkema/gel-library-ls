@@ -9,7 +9,8 @@
   "scripts": {
     "add-component": "node ./scripts/add-component.js",
     "publish-components": "lerna version major && lerna publish from-package",
-    "story": "yarn --cwd ./packages story"
+    "story": "yarn --cwd ./packages story",
+    "setup": "yarn && yarn --cwd ./packages install && yarn --cwd .. lerna bootstrap"
   },
   "workspaces": [
     "packages/*"

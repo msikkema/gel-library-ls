@@ -1,29 +1,53 @@
-### IN progress! ###
+# Gel Library LS
 
-## Notes for writing the final readme ##
+This is a Lerna and Storybook version of the component library.
 
-Remember package names need to be prefixed:
+## Requirements
+- Yarn
+- Node 16.13.0
 
-```
-one thing to note when setting the name. You just change into the directory:
+## Installation
 
-cd packages && mkdir my-monorepo-ui-lib && cd my-monorepo-ui-lib
-
-And initialize a package:
-
-yarn init
-
-But with the name @my-org/my-monorepo-ui-lib. This is using a feature called npm organization scope and requires you to set up an organization with npmjs.com if you want to publish as the @my-org organization.
-```
+You need to log in to ReachOut's npm to use this, get the credentials from 1Pass and login using:
 
 ```
-Yarn does not install peer dependencies, so you need to install them yourself
-
-the peer dependencies are also defined as dev dependencies so we can develop locally
+npm login
 ```
 
+Then you can run the setup command for this project:
+
 ```
-registry=http://registry.npmjs.org/
-//registry.npmjs.org/:_authToken=${NPM_TOKEN}
-@ourscope:registry=https://registry.npmjs.org/
+yarn setup
+```
+
+## Running
+
+```
+yarn story
+```
+The terminal prompt will then describe where you can view the Storybook server with the Gel Library components running inside.
+
+## Adding a new component
+
+```
+yarn add-component
+```
+
+Then follow the onscreen prompts.
+
+## Publishing
+
+```
+yarn publish-components
+```
+
+Will bump all altered components by a major version (So they aren't accidentally ingested by projects elsewhere), and will then use Lerna to push the components to npm.
+
+## Troubleshooting
+
+Lerna disliked my `.npmrc` file, I was forced to add ReachOut's scope manually despite being logged in:
+
+```
+//registry.npmjs.org/:_authToken=<your npm token should be here after logging in>
+@reachout:registry=https://registry.npmjs.org/
 ```
