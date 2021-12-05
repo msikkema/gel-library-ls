@@ -32,7 +32,7 @@ inquirer
           console.log({ camelCase, asPascalCase, asSentenceCase });
 
           // Use Lerna to add the new sub package
-          execSync(`yarn lerna create @reachout/${asParamCase} --yes`, {stdio: 'inherit'});
+          execSync(`yarn lerna create @reachout/${asParamCase} --access "restricted" --yes`, {stdio: 'inherit'});
 
           // Use Hygen to fill in the component scaffolding
           execSync(
