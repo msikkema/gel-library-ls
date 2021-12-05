@@ -1,6 +1,6 @@
-# Gel Library LS
+# ReachOut's Gel Library LS
 
-This is a Lerna and Storybook version of the component library.
+This is a Lerna and Storybook version (hence the LS) of the Bit.dev component library used by ReachOut.
 
 ## Requirements
 - Yarn
