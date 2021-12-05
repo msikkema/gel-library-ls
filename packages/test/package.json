@@ -1,6 +1,6 @@
 {
   "name": "@reachout/test",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "> TODO: description",
   "author": "msikkema <mattsikkema@icloud.com>",
   "homepage": "https://github.com/msikkema/gel-library-ls#readme",
@@ -25,6 +25,5 @@
   },
   "bugs": {
     "url": "https://github.com/msikkema/gel-library-ls/issues"
-  },
-  "gitHead": "3de93b11021dcede51e80af5e288f519dffcea1e"
+  }
 }
