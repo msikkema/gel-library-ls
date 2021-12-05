@@ -21,3 +21,9 @@ Yarn does not install peer dependencies, so you need to install them yourself
 
 the peer dependencies are also defined as dev dependencies so we can develop locally
 ```
+
+```
+registry=http://registry.npmjs.org/
+//registry.npmjs.org/:_authToken=${NPM_TOKEN}
+@ourscope:registry=https://registry.npmjs.org/
+```
