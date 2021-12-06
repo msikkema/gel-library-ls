@@ -27,13 +27,29 @@ yarn story
 ```
 The terminal prompt will then describe where you can view the Storybook server with the Gel Library components running inside.
 
-## Adding a new component
+## Adding a new component and developing
 
 ```
 yarn add-component
 ```
 
 Then follow the onscreen prompts.
+
+To publish a canary version of your component, you need to commit your code (or Lerna will get angry, and trust me - you won't like that), and then run
+
+```
+yarn canary
+```
+
+This will then publish a canary version of your component (ie not a mainline version), you may then ingest this canary version where you wish.
+
+*Although* A better option for fast local development is to use [Yarn Link](https://classic.yarnpkg.com/en/docs/cli/link/). Don't forget to run `yarn build` before you link your new package.
+
+You can run tests with:
+
+```
+yarn test
+```
 
 ## Publishing
 
@@ -53,6 +69,11 @@ Lerna disliked my `.npmrc` file, I was forced to add ReachOut's scope manually d
 ```
 
 ## Geekery
+
+### Matt's to do before he absconds to the world of private health insurance:
+- Enforce linting
+- Enforce testing
+- Set up build pipeline and s3 bucket to host storybook
 
 ### Lerna
 ### Storybook
