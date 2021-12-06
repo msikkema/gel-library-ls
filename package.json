@@ -11,7 +11,7 @@
     "publish-components": "lerna version major && lerna publish from-package",
     "story": "yarn --cwd ./packages story",
     "setup": "yarn && yarn --cwd ./packages install && yarn --cwd .. lerna bootstrap",
-    "build": "tsc",
+    "build": "tsc --b ./packages/*/tsconfig.json",
     "test": "jest"
   },
   "workspaces": [

@@ -51,3 +51,9 @@ Lerna disliked my `.npmrc` file, I was forced to add ReachOut's scope manually d
 //registry.npmjs.org/:_authToken=<your npm token should be here after logging in>
 @reachout:registry=https://registry.npmjs.org/
 ```
+
+## Geekery
+
+### Lerna
+### Storybook
+### Typescript and Compilation

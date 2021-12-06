@@ -1,3 +1,8 @@
+---
+to: packages/<%= paramCase %>/tsconfig.json
+force: true
+---
+
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
