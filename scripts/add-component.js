@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
-const inquirer = require('inquirer');
+const inquirer = require("inquirer");
+const rimraf = require("rimraf");
 const { execSync } = require("child_process");
 const { pascalCase, sentenceCase, paramCase } = require("change-case");
 
@@ -40,6 +41,9 @@ inquirer
 
           // Use Lerna to add the new sub package
           execSync(`yarn lerna create @reachout/${asParamCase} --access "restricted" --description "${description}" --yes`, { stdio: 'inherit' });
+
+          // Nuke the Lerna scaffolding pieces we don't want
+          rimraf.sync(`./packages/${asParamCase}/__tests__/*.js`);
 
           // Use Hygen to fill in the component scaffolding
           execSync(

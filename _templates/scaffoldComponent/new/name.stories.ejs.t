@@ -1,5 +1,5 @@
 ---
-to: packages/<%= paramCase %>/<%= pascalCase %>.stories.tsx
+to: packages/<%= paramCase %>/<%= camelCase %>.stories.tsx
 force: true
 ---
 
