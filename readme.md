@@ -5,6 +5,7 @@ This is a Lerna and Storybook version (hence the LS) of the Bit.dev component li
 ## Requirements
 - Yarn
 - Node 16.13.0
+- EsLint plugin for your text editor recommended
 
 ## Installation
 

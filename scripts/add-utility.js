@@ -4,14 +4,17 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 
 /**
- * This file adds a lerna-managed component for ReachOut's Gel library.
- * For utilities, see the add-utility script
+ * This file adds a lerna-managed utility for ReachOut's Gel library.
+ * For components, see the add-component script.
+ * 
+ * Utilities here should be gel-related. For standalone utilities,
+ * please create a separate npm package for ReachOut's repository.
  */
 const inquirer = require("inquirer");
 const rimraf = require("rimraf");
 const { execSync } = require("child_process");
 const editJsonFile = require("edit-json-file");
-const { componentNameSteps, caseGenerator, componentNameConfirmation } = require("./common");
+const { componentNameConfirmation, componentNameSteps, caseGenerator } = require("./common");
 
 inquirer
   .prompt(componentNameSteps)
@@ -35,18 +38,19 @@ inquirer
           componentPackageJson.set("files", [ "dist/*" ]);
           componentPackageJson.save();
 
+
           // Nuke the Lerna scaffolding pieces we don't want
           rimraf.sync(`./packages/${asParamCase}/__tests__/*.js`);
           rimraf.sync(`./packages/${asParamCase}/lib`);
 
-          // Use Hygen to fill in the component scaffolding
+          // Use Hygen to build non-component, utility scaffolding
           execSync(
-            `yarn hygen scaffoldComponent new --camelCase ${camelCase} --pascalCase ${asPascalCase} --sentenceCase ${asSentenceCase} --paramCase ${asParamCase}`,
+            `yarn hygen addUtility new --camelCase ${camelCase} --pascalCase ${asPascalCase} --sentenceCase ${asSentenceCase} --paramCase ${asParamCase}`,
             { stdio: 'inherit' }
           );
+
         } else {
           console.log("Aborting...");
         }
       });
   });
-
