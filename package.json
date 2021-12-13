@@ -9,8 +9,8 @@
   "scripts": {
     "add-component": "node ./scripts/add-component.js",
     "add-utility": "node ./scripts/add-utility.js",
-    "publish-components": "yarn build && lerna version major && lerna publish from-package",
-    "canary": "yarn build && lerna publish --canary --preid next",
+    "publish-components": "yarn test && yarn build && lerna version major && lerna publish from-package",
+    "canary": "yarn test && yarn build && lerna publish --canary --preid next",
     "story": "yarn --cwd ./packages story",
     "setup": "yarn && yarn --cwd ./packages install && yarn --cwd .. lerna bootstrap",
     "build": "tsc --b ./packages/*/tsconfig.json",
