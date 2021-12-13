@@ -1,11 +1,11 @@
-# `button`
+# `mui-style`
 
 > TODO: description
 
 ## Usage
 
 ```
-const button = require('button');
+const muiStyle = require('mui-style');
 
 // TODO: DEMONSTRATE API
 ```

@@ -1,0 +1,41 @@
+{
+  "name": "@reachout/ro-button",
+  "version": "1.0.0",
+  "description": "ReachOut's standard button",
+  "keywords": [],
+  "author": "msikkema <mattsikkema@icloud.com>",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "dist/*"
+  ],
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/msikkema/gel-library-ls.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/msikkema/gel-library-ls/issues"
+  },
+  "homepage": "https://github.com/msikkema/gel-library-ls#readme",
+  "peerDependencies": {
+    "@emotion/react": "^11.7.0",
+    "@emotion/styled": "^11.6.0",
+    "@mui/material": "^5.2.3"
+  },
+  "devDependencies": {
+    "@emotion/react": "^11.7.0",
+    "@emotion/styled": "^11.6.0",
+    "@mui/material": "^5.2.3",
+    "@reachout/mui-style": "1.0.1"
+  }
+}

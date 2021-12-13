@@ -13,7 +13,8 @@
     "story": "yarn --cwd ./packages story",
     "setup": "yarn && yarn --cwd ./packages install && yarn --cwd .. lerna bootstrap",
     "build": "tsc --b ./packages/*/tsconfig.json",
-    "test": "jest"
+    "test": "jest",
+    "bootstrap": "lerna bootstrap"
   },
   "workspaces": [
     "packages/*"

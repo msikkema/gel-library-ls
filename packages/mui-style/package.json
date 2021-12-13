@@ -1,11 +1,11 @@
 {
-  "name": "@reachout/button",
-  "version": "1.0.2",
-  "description": "> TODO: description",
+  "name": "@reachout/mui-style",
+  "version": "1.0.1",
+  "description": "Provides global ReachOut theming for our React components",
   "author": "msikkema <mattsikkema@icloud.com>",
   "homepage": "https://github.com/msikkema/gel-library-ls#readme",
   "license": "MIT",
-  "main": "lib/button.js",
+  "main": "lib/mui-style.js",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
@@ -25,5 +25,15 @@
   },
   "bugs": {
     "url": "https://github.com/msikkema/gel-library-ls/issues"
+  },
+  "peerDependencies": {
+    "@emotion/react": "^11.7.0",
+    "@emotion/styled": "^11.6.0",
+    "@mui/material": "^5.2.3"
+  },
+  "devDependencies": {
+    "@emotion/react": "^11.7.0",
+    "@emotion/styled": "^11.6.0",
+    "@mui/material": "^5.2.3"
   }
 }
