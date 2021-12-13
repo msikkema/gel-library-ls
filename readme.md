@@ -196,6 +196,27 @@ Try to alter the package level `tsconfig.json` only.
 ### What's the all the stuff in the _templates folder?
 
 This project uses a library called [Hygen](https://www.hygen.io/) to generate templates for adding components and utilities. When you add a component or utility, the script will invoke Hygen, which will look in the `_templates` folder to instruct it on how to build out the scaffolding.
+
+### I need to publish a non major version
+
+Sure, but you will need to use Lerna directly, use:
+
+```
+yarn lerna version
+```
+
+which will allow you fine grained control over versioning, and then build the packages:
+
+```
+yarn build
+```
+
+Which will transpile each npm module into it's associated `./dist` folder, and then you can push to npm using
+
+```
+yarn lerna publish
+```
+
 ## Geekery
 
 ### Matt's to do before he absconds to the world of private health insurance:
