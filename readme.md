@@ -90,7 +90,7 @@ This command will bump all altered components by a major version (So they aren't
 ## How do I ingest a component into a consumer and use it?
 This project uses peer dependencies for the components it hosts - this is a dependency that the component requires to work, but the consumer must provide. This means we don't force a consumer to use a particular version of a library, which can cause unintended headaches later down the road.
 
-Individual components may have different peer dependencies, but generally for each React component they will generally be:
+Individual components may have different peer dependencies, but generally for each React component they will be:
 
 `react` and `react-dom` as the components are React components, and
 
@@ -98,7 +98,7 @@ Individual components may have different peer dependencies, but generally for ea
 
 tl;dr: add `react`, `react-dom`, `@mui/material`, `@emotion/react` and `@emotion/styled` to your project.
 
-Our components also use Mui's theme provider, which means this needs to be implemented. [You can read about how to implement the ThemeProvider HOC here](https://mui.com/customization/theming/#themeprovider).
+Our components use Mui's theme provider, which the consumer needs to implement. [You can read about how to implement the ThemeProvider HOC here](https://mui.com/customization/theming/#themeprovider).
 
 Once you've implemented the ThemeProvider HOC, you can use our ReachOut theme from `@reachout/mui-style`.
 
@@ -150,9 +150,50 @@ Lerna disliked my `.npmrc` file, I was forced to add ReachOut's scope manually d
 @reachout:registry=https://registry.npmjs.org/
 ```
 
-### The npm packages don't work, or are missing imports, or the types are making TS barf in my lap
+### The npm packages don't work, are missing imports, or the types are making TS barf in my lap
 
 Make sure the `package.json` for the module is correct - the `main` property needs to point at the transpiled entry point for the module, make sure everything in the dist folder is listed under `files` (although that should be `dist/*` unless you've got a very good reason to change it), and make sure sure TypeScript is actually building your module and including a `*.d.ts` file before you publish it.
+
+### The component doesn't have any styling in Storybook!
+I know, [there's a bug](https://github.com/mui-org/material-ui/issues/24282#issuecomment-859393395). The workaround right now is to wrap it in _two_ ThemeProviders, one from Mui and one from Emotion (which Mui uses internall anyway). The `ro-button` story illustrates how to implement this workaround:
+
+```jsx
+import React from "react";
+import { ComponentStory, ComponentMeta } from "@storybook/react";
+import RoButton from "./index";
+import { ThemeProvider } from '@mui/material/styles';
+import { ThemeProvider as EmotionThemeProvider } from "emotion-theming"
+import roTheme from "@reachout/mui-style"
+
+
+export default {
+  title: "roButton",
+  component: RoButton,
+  decorators: [Story => (
+    <EmotionThemeProvider theme={roTheme}>
+      <ThemeProvider theme={roTheme}>
+        <Story />
+      </ThemeProvider>
+    </EmotionThemeProvider>
+  )]
+} as ComponentMeta<typeof RoButton>;
+
+export const Primary: ComponentStory<typeof RoButton> = () => (
+  <RoButton variant="contained">Here is some text</RoButton>
+);
+```
+
+## Questions:
+
+### Why are stories for components wrapped in two theme providers? Do I need to do this too?
+Broadly - No. At the time of building, there is an issue with Storybook's and our Component library's versions of Emotion, [the fix is described here](https://github.com/mui-org/material-ui/issues/24282#issuecomment-859393395).
+
+You may need the double theme provider to get your story to work correctly in Storybook, but you should stick to using the single MUI sanctioned `ThemeProvider` outside of this project.
+
+### I altered the tsconfig.json in the project root and now there is chaos
+There are two types of `tsconfig.json` files - one that lives in the root of this project, and ones that live in each individual package. All package level `tsconfig.json`s will inherit their base configuration from the root one, so if you alter that without being careful, you may break multiple packages in the repo.
+
+Try to alter the package level `tsconfig.json` only.
 
 ## Geekery
 
