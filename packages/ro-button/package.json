@@ -1,6 +1,6 @@
 {
   "name": "@reachout/ro-button",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "ReachOut's standard button",
   "keywords": [],
   "author": "msikkema <mattsikkema@icloud.com>",
@@ -36,6 +36,6 @@
     "@emotion/react": "^11.7.0",
     "@emotion/styled": "^11.6.0",
     "@mui/material": "^5.2.3",
-    "@reachout/mui-style": "1.0.1"
+    "@reachout/mui-style": "^2.0.0"
   }
 }
