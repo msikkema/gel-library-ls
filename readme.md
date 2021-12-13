@@ -158,3 +158,5 @@ Make sure the `package.json` for the module is correct - the `main` property nee
 
 ### Matt's to do before he absconds to the world of private health insurance:
 - Set up build pipeline and s3 bucket to host storybook
+- Fill out some of the storybook add ons
+- Add Husky
