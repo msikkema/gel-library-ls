@@ -25,6 +25,8 @@ Then you can run the setup command for this project:
 yarn setup
 ```
 
+If you run into an error, make sure you're using a terminal in admin mode (for Windows). If you've been developing with bit.dev, it has a habit of messing up your `.npmrc` config, see the `troubleshooting` section towards the bottom of this readme.
+
 ## Running Storybook
 
 ```
@@ -94,12 +96,53 @@ Individual components may have different peer dependencies, but generally for ea
 
 `@mui/material`, `@emotion/react` and `@emotion/styled` as our components are based on Mui, a React implementation of Material design. Note that we are using Material UI 5+, not the legacy versions prior to 5.
 
+tl;dr: add `react`, `react-dom`, `@mui/material`, `@emotion/react` and `@emotion/styled` to your project.
+
 Our components also use Mui's theme provider, which means this needs to be implemented. [You can read about how to implement the ThemeProvider HOC here](https://mui.com/customization/theming/#themeprovider).
 
 Once you've implemented the ThemeProvider HOC, you can use our ReachOut theme from `@reachout/mui-style`.
 
+Example:
+
+Add the HOC, and then add the ReachOut theme as a prop to it:
+```jsx
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+import { ThemeProvider } from '@mui/material/styles';
+import roTheme from '@reachout/mui-style';
+
+ReactDOM.render(
+  <React.StrictMode>
+    <ThemeProvider theme={roTheme}>
+      <App />
+    </ThemeProvider>
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+```
+
+Now you can use our gel components like so:
+
+```jsx
+import React from 'react';
+import RoButton from "@reachout/ro-button";
+import './App.css';
+
+function App() {
+  return (
+    <div className="App">
+        <RoButton>Something</RoButton>
+    </div>
+  );
+}
+
+export default App;
+```
+
 ## Troubleshooting
 
+### Issues runing Setup or Publish
 Lerna disliked my `.npmrc` file, I was forced to add ReachOut's scope manually despite being logged in:
 
 ```
@@ -107,11 +150,11 @@ Lerna disliked my `.npmrc` file, I was forced to add ReachOut's scope manually d
 @reachout:registry=https://registry.npmjs.org/
 ```
 
+### The npm packages don't work, or are missing imports, or the types are making TS barf in my lap
+
+Make sure the `package.json` for the module is correct - the `main` property needs to point at the transpiled entry point for the module, make sure everything in the dist folder is listed under `files` (although that should be `dist/*` unless you've got a very good reason to change it), and make sure sure TypeScript is actually building your module and including a `*.d.ts` file before you publish it.
+
 ## Geekery
 
 ### Matt's to do before he absconds to the world of private health insurance:
 - Set up build pipeline and s3 bucket to host storybook
-
-### Lerna
-### Storybook
-### Typescript and Compilation
