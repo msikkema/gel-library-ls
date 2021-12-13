@@ -48,6 +48,10 @@ You can run tests with:
 yarn test
 ```
 
+Note that you will very, very likely need to add `react`, `react-dom`, `@mui/material`, `@emotion/react` and `@emotion/styled` as both peer dependencies (with the `-P` flag when using `yarn add`) and dev dependencies (with the `-D` flag with `yarn add`). The reason being peer dependencies are not automatically downloaded, so when you are developing your component, the above packages are both "peer" dependencies (for the consumer) and "dev" dependencies (for you).
+
+Once you've added your peer + dev dependencies, run `yarn bootstrap` to have Lerna tidy up and take care of any cross-linked dependencies in the project.
+
 ## Adding a new utility
 This project can host utility functions - but it's not a substitute for creating separate monorepos, and as such only gel-related utilities should be added here. Please consider your needs carefully before adding a new utility package to this project.
 
