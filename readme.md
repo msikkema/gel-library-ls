@@ -68,7 +68,7 @@ This project caters to three use cases for publishing:
 Note that for Lerna to function correctly, you need to commit your code before it will allow you to push anything to npm.
 
 ### Publishing situation 1:
-[I promise you, it's really easy. Please stop publishing superfluous preview versions. Don't make me come over there.](https://piyushswain.github.io/usage-of-yarn-link/)
+Make sure you build using `yarn build` and then you can use `yarn link` in the individual package you're developing. [I promise you, it's really easy. Please stop publishing superfluous preview versions. Don't make me come over there.](https://piyushswain.github.io/usage-of-yarn-link/)
 
 ### Publishing situation 2:
 ```
@@ -189,10 +189,13 @@ Broadly - No. At the time of building, there is an issue with Storybook's and ou
 You may need the double theme provider to get your story to work correctly in Storybook, but you should stick to using the single MUI sanctioned `ThemeProvider` outside of this project.
 
 ### I altered the tsconfig.json in the project root and now there is chaos
-There are two types of `tsconfig.json` files - one that lives in the root of this project, and ones that live in each individual package. All package level `tsconfig.json`s will inherit their base configuration from the root one, so if you alter that without being careful, you may break multiple packages in the repo.
+There are two types of `tsconfig.json` files - one that lives in the root of this project, and multiple versions that live in each individual package. All package level `tsconfig.json`s will inherit their base configuration from the root one, so if you alter that without being careful, you may break multiple packages in the repo.
 
 Try to alter the package level `tsconfig.json` only.
 
+### What's the all the stuff in the _templates folder?
+
+This project uses a library called [Hygen](https://www.hygen.io/) to generate templates for adding components and utilities. When you add a component or utility, the script will invoke Hygen, which will look in the `_templates` folder to instruct it on how to build out the scaffolding.
 ## Geekery
 
 ### Matt's to do before he absconds to the world of private health insurance:
