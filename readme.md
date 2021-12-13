@@ -42,7 +42,7 @@ yarn add-component
 
 Then follow the onscreen prompts.
 
-*Although* A better option for fast local development is to use [Yarn Link](https://classic.yarnpkg.com/en/docs/cli/link/). Don't forget to run `yarn build` before you link your new package.
+*Although* a better option for fast local development is to use [Yarn Link](https://classic.yarnpkg.com/en/docs/cli/link/). Don't forget to run `yarn build` before you link your new package.
 
 You can run tests with:
 
