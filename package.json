@@ -15,7 +15,7 @@
     "build": "tsc --b ./packages/*/tsconfig.json",
     "test": "jest",
     "bootstrap": "lerna bootstrap",
-    "lint": "eslint . --ext .ts,.tsx  --max-warnings=0",
+    "lint": "eslint . --ext .ts,.tsx  --max-warnings=0"
   },
   "workspaces": [
     "packages/*"
