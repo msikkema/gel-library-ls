@@ -1,5 +1,11 @@
 #!/usr/bin/env node
+/* eslint-disable no-undef */
+/* eslint-disable @typescript-eslint/no-var-requires */
 
+/**
+ * This file adds a lerna-managed component for ReachOut's Gel library.
+ * For utilities, see the add-utility script
+ */
 const inquirer = require("inquirer");
 const rimraf = require("rimraf");
 const { execSync } = require("child_process");
@@ -38,8 +44,6 @@ inquirer
         else if (confirm) {
           const asPascalCase = pascalCase(camelCase);
           const asSentenceCase = sentenceCase(camelCase);
-
-          console.log({ camelCase, asPascalCase, asSentenceCase });
 
           // Use Lerna to add the new sub package
           execSync(`yarn lerna create @reachout/${asParamCase} --access "restricted" --description "${description}" --yes`, { stdio: 'inherit' });
