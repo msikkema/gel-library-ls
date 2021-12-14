@@ -8,7 +8,7 @@ This project includes a number of scripts you can invoke to add components, add 
 
 ## Requirements
 - Yarn
-- Node >16.13.0
+- Node 16.13.0
 - EsLint plugin for your text editor recommended
 
 ## Installation
@@ -224,6 +224,7 @@ yarn lerna publish
 ## Geekery
 
 ### Matt's to do before he absconds to the world of private health insurance:
+- Setup works, but `yarn story` is flakey in windows still
 - Set up build pipeline and s3 bucket to host storybook
 - Fill out some of the storybook add ons
 - Add Husky

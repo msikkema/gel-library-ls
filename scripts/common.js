@@ -2,6 +2,10 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const { pascalCase, sentenceCase, paramCase } = require("change-case");
 
+const peersAndDevsForComponents = [
+  "react", "react-dom", "@mui/material", "@emotion/react", "@emotion/styled"
+];
+
 const componentNameSteps = [
   {
     type: "input",
@@ -32,4 +36,9 @@ const caseGenerator = camelCase => ({
   asSentenceCase: sentenceCase(camelCase)
 });
 
-module.exports = { componentNameSteps, caseGenerator, componentNameConfirmation };
+module.exports = {
+  componentNameSteps,
+  caseGenerator,
+  componentNameConfirmation,
+  peersAndDevsForComponents
+};
