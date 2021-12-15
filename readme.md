@@ -72,7 +72,7 @@ Note that for Lerna to function correctly, you need to commit your code before i
 ### Publishing situation 1:
 Make sure you build using `yarn build` and then you can use `yarn link` in the individual package you're developing. [I promise you, it's really easy. Please stop publishing superfluous preview versions. Don't make me come over there.](https://piyushswain.github.io/usage-of-yarn-link/)
 
-*Note* that you _dont_ need to use yarn link if you only need to alter a pair sibling packages within this project, linking is only applicable here for separate projects. [For sibling packages in the same workspace, they are automatically linked as they live in the same workspace.](https://classic.yarnpkg.com/en/docs/workspaces#toc-why-would-you-want-to-do-this)
+*Note* that you _dont_ need to use yarn link if you only need to alter a pair sibling packages within this project, linking is only applicable here for separate projects. [For sibling packages in the same workspace, they are automatically linked as they live in the same workspace.](https://classic.yarnpkg.com/en/docs/workspaces#toc-why-would-you-want-to-do-this). Remember that the linked content is whatever is transpiled to the `./dist` folder in each package, so if you don't see your expected changes in your consuming sibling package, try running `yarn build`.
 
 ### Publishing situation 2:
 ```
