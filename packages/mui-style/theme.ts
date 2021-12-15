@@ -1,4 +1,5 @@
 import { createTheme } from "@mui/material/styles";
+import { fontFamily } from "./fonts";
 
 const theme = createTheme({
   palette: {
@@ -7,6 +8,7 @@ const theme = createTheme({
     }
   },
   typography: {
+    fontFamily: fontFamily,
     fontSize: 16,
     button: {
       textTransform: "none",

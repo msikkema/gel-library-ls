@@ -8,7 +8,7 @@ This project includes a number of scripts you can invoke to add components, add 
 
 ## Requirements
 - Yarn
-- Node 16.13.0
+- Node 16.13.0 (note v17 seems to have issues)
 - EsLint plugin for your text editor recommended
 
 ## Installation
@@ -72,6 +72,8 @@ Note that for Lerna to function correctly, you need to commit your code before i
 ### Publishing situation 1:
 Make sure you build using `yarn build` and then you can use `yarn link` in the individual package you're developing. [I promise you, it's really easy. Please stop publishing superfluous preview versions. Don't make me come over there.](https://piyushswain.github.io/usage-of-yarn-link/)
 
+*Note* that you _dont_ need to use yarn link if you only need to alter a pair sibling packages within this project, linking is only applicable here for separate projects. [For sibling packages in the same workspace, they are automatically linked as they live in the same workspace.](https://classic.yarnpkg.com/en/docs/workspaces#toc-why-would-you-want-to-do-this)
+
 ### Publishing situation 2:
 ```
 yarn canary
@@ -81,6 +83,7 @@ You will then see an output message describing the name of the package (note it 
 
 ### Publishing situation 3:
 If you're _really_ ready to publish your new package(s)
+
 ```
 yarn publish-components
 ```
