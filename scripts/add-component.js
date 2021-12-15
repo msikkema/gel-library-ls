@@ -59,27 +59,18 @@ inquirer
                 type: "confirm",
                 name: "addPeersAndDevs",
                 message: "You probably need react, react-dom, @mui/material, @emotion/react and @emotion/styled as peer and dev dependencies for this project. Add them now?"
-              },
-              {
-                type: "confirm",
-                name: "addStylePackage",
-                message: "Also add @reachout/mui-style as a dev dependency? Use this if you need to use ReachOut's theme - requires access to @reachout's npm account"
               }
-            ]).then(({ addPeersAndDevs, addStylePackage }) => {
-
-              // Need to cd into the correct dir
+            ]).then(({ addPeersAndDevs }) => {
               if (addPeersAndDevs) {
                 execSync(`yarn --cwd ./packages/${asParamCase} add -D ${peersAndDevsForComponents.join(" ")} && yarn --cwd ./packages/${asParamCase} add -P ${peersAndDevsForComponents.join(" ")}`, { stdio: 'inherit' });
                 console.log("\npackages for developing components have been added.");
               }
-              if (addStylePackage) {
-                execSync(`yarn --cwd ./packages/${asParamCase} add -D @reachout/mui-style`, { stdio: 'inherit' });
-                console.log("\nReachOut's theme added as a dev dependency (note, not as a peer or required dependency)");
-              }
+
+              // Install and cross link dependencies
+              execSync("yarn bootstrap", { stdio: 'inherit' });
             });
         } else {
           console.log("Aborting...");
         }
       });
   });
-

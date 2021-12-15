@@ -42,15 +42,13 @@ yarn add-component
 
 Then follow the onscreen prompts.
 
+Note you will be asked if you wish to add `react`, `react-dom`, `@mui/material`, `@emotion/react` and `@emotion/styled`, and the script will do this for you automatically. If you're unsure if you need this, then the answer is probably "yes".
+
 You can run tests with:
 
 ```
 yarn test
 ```
-
-Note that you will very, very likely need to add `react`, `react-dom`, `@mui/material`, `@emotion/react` and `@emotion/styled` as both peer dependencies (with the `-P` flag when using `yarn add`) and dev dependencies (with the `-D` flag with `yarn add`). The reason being peer dependencies are not automatically downloaded, so when you are developing your component, the above packages are both "peer" dependencies (for the consumer) and "dev" dependencies (for you).
-
-Once you've added your peer + dev dependencies, run `yarn bootstrap` to have Lerna tidy up and take care of any cross-linked dependencies in the project.
 
 ## Adding a new utility
 This project can host utility functions - but it's not a substitute for creating separate monorepos, and as such only gel-related utilities should be added here. Please consider your needs carefully before adding a new utility package to this project.
@@ -225,6 +223,8 @@ yarn lerna publish
 
 ### Matt's to do before he absconds to the world of private health insurance:
 - Setup works, but `yarn story` is flakey in windows still
-- Set up build pipeline and s3 bucket to host storybook
+- Set up build circleCI pipeline and s3 bucket to host storybook
 - Fill out some of the storybook add ons
+- Add more information about how cross-linked packages work in a yarn workspace, and how this affects @reachout/mui-style's usage here
+- Add some convenience methods around git tagging for lerna
 - Add Husky
